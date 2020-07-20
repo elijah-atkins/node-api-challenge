@@ -32,7 +32,17 @@ router.get("/", (req, res) => {
       });
   });
 
-
+  router.post('/', validateProject, (req, res) => {
+    Projects.insert(req.body)
+    .then((project) => {
+      res.status(201).json(project);
+    })
+    .catch((error) => {
+      res.status(500).json({
+        error: "There was an error while saving the project to the database",
+      });
+    });
+  });
 
 //custom middleware
 
@@ -40,12 +50,12 @@ router.get("/", (req, res) => {
   
   function validateProject(req, res, next) {
       const body = req.body;
-      const { name } = req.body;
+      const { name, description } = req.body;
       if (!body || Object.entries(body).length === 0) {
         res.status(400).json({ message: "missing project data" })
       }
-      if(!name || name === []){
-        res.status(400).json({ message: "missing required name field" })
+      if(!name ||!description || name === [] || description === []){
+        res.status(400).json({ message: "missing required name and/or description field" })
       }
         next();
   }
