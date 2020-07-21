@@ -32,18 +32,18 @@ router.get("/:id", (req, res) => {
     });
 });
 router.get("/:id/actions", (req, res) => {
-    // do your magic!
-    const { id } = req.params;
-    Projects.getProjectActions(id)
-      .then((actions) => {
-        res.status(200).json(actions);
-      })
-      .catch((error) => {
-        res.status(500).json({
-          error: "The project action information could not be retrieved.",
-        });
+  // do your magic!
+  const { id } = req.params;
+  Projects.getProjectActions(id)
+    .then((actions) => {
+      res.status(200).json(actions);
+    })
+    .catch((error) => {
+      res.status(500).json({
+        error: "The project action information could not be retrieved.",
       });
-  });
+    });
+});
 
 router.post("/", validateProject, (req, res) => {
   Projects.insert(req.body)
@@ -72,15 +72,17 @@ router.put("/:id", validateProject, (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-    const id = req.params.id;
-    Projects.remove(id)
-    .then(count => {
-        res.status(200).json({ message: 'The project has been removed' });
-    }).catch(err =>{
-      res.status(500).json({ message: 'The project could not be found', error: err });
-    }
-    )
-  });
+  const id = req.params.id;
+  Projects.remove(id)
+    .then((count) => {
+      res.status(200).json({ message: "The project has been removed" });
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json({ message: "The project could not be found", error: err });
+    });
+});
 
 //custom middleware
 
