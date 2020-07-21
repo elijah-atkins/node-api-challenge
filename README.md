@@ -114,3 +114,17 @@ We have provided test data for all the resources.
 - From the React application show a list of all _projects_ using the API you built.
 - Add functionality to show the details of a project, including its actions, when clicking a project name in the list. Use React Router to navigate to a separate route to show the project details.
 - Add styling!
+
+
+
+
+## Api Endpoints
+
+| Method | URL            | Description                                                                                            |
+| ------ | -------------- | ------------------------------------------------------------------------------------------------------ |
+| POST   | /api/projects     | Creates a project using the information sent inside the `request body`.                                   |
+| GET    | /api/projects     | Returns an array of projects.                                                                                |
+| GET    | /api/projects/:id | Returns the project object with the specified `id`.                                                       |
+| DELETE | /api/projects/:id | Removes the project with the specified `id` and returns the deleted project.                                 |
+| PUT    | /api/projects/:id | Updates the project with the specified `id` using data from the `request body`. Returns the modified project |
+| GET    | /api/projects/:id/actions     | Returns an array of actions for the project with specified `id`. 
