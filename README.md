@@ -120,8 +120,10 @@ We have provided test data for all the resources.
 
 ## Api Endpoints
 
-| Method | URL            | Description                                                                                            |
-| ------ | -------------- | ------------------------------------------------------------------------------------------------------ |
+| Method | URL | Description | 
+
+|-------------------------------------------------------------- |
+
 | POST   | /api/projects     | Creates a project using the information sent inside the `request body`.                                   |
 | GET    | /api/projects     | Returns an array of projects.                                                                                |
 | GET    | /api/projects/:id | Returns the project object with the specified `id`.                                                       |
